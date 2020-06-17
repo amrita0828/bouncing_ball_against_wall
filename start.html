@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <title>Bouncing-a-ball</title>
+  <script>
+    var context;
+    var x = 500;
+    var y = 150;
+    var dx = 5;
+    var dy = 5;
+
+    function init() {
+      context = myCanvas.getContext("2d");
+      setInterval(draw, 10);
+    }
+
+    function draw() {
+      context.clearRect(0, 0, 600, 600);
+      context.beginPath();
+      context.fillStyle = "#0000FF";
+      context.arc(x, y, 20, 0, Math.PI * 2, true);
+      context.closePath();
+      context.fill();
+      if (x < 0 || x > 600) dx = -dx;
+      if (y < 0 || y > 600) dy = -dy;
+      x += dx;
+      y += dy;
+    }
+  </script>
+  <body onLoad="init();">
+    <canvas
+      id="myCanvas"
+      width="600"
+      height="600"
+      style="border: 1px solid #000000;"
+    >
+    </canvas>
+  </body>
+</html>
